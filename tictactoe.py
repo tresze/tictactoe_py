@@ -1,110 +1,62 @@
 #tictactoe.py
 
 def printgrid():
-    print(grid[0], "|", grid[1], "|", grid[2])
+    print("\n" + grid[0], "|", grid[1], "|", grid[2])
     print("---------")
     print(grid[3], "|", grid[4], "|", grid[5])
     print("---------")
-    print(grid[6], "|", grid[7], "|", grid[8])
+    print(grid[6], "|", grid[7], "|", grid[8], "\n")
 
-def user_input_x():
-    numberx = input("Player 1: ")
-    while numberx not in accepted_chars: 
+def user_input(t):
+    if t % 2 == 0:
+        pl = "1"
+        mark = "X"
+    else:
+        pl = "2"
+        mark = "O"
+
+    number = input("Player " + pl + ": ")
+    while number not in accepted_chars: 
             print("Invalid input! You can write: 1/2/3/4/5/6/7/8/9")
-            numberx = input("Player 1: ")
+            number = input("Player " + pl + ": ")
 
     print()
 
-    if numberx == "7":
-        grid[0] = "X"
+    if number == "7":
+        grid[0] = mark
         printgrid()
-        print()
-    elif numberx == "8":
-        grid[1] = "X"
+    elif number == "8":
+        grid[1] = mark
         printgrid()
-        print()
-    elif numberx == "9":
-        grid[2] = "X"
+    elif number == "9":
+        grid[2] = mark
         printgrid()
-        print()
-    elif numberx == "4":
-        grid[3] = "X"
+    elif number == "4":
+        grid[3] = mark
         printgrid()
-        print()
-    elif numberx == "5":
-        grid[4] = "X"
+    elif number == "5":
+        grid[4] = mark
         printgrid()
-        print()
-    elif numberx == "6":
-        grid[5] = "X"
+    elif number == "6":
+        grid[5] = mark
         printgrid()
-        print()
-    elif numberx == "1":
-        grid[6] = "X"
+    elif number == "1":
+        grid[6] = mark
         printgrid()
-        print()
-    elif numberx == "2":
-        grid[7] = "X"
+    elif number == "2":
+        grid[7] = mark
         printgrid()
-        print()
-    elif numberx == "3":
-        grid[8] = "X"
+    elif number == "3":
+        grid[8] = mark
         printgrid()
-        print()
-
-def user_input_o():
-    numbero = input("Player 2: ")
-    while numbero not in accepted_chars: 
-            print("Invalid input! You can write: 1/2/3/4/5/6/7/8/9")
-            numbero = input("Player 2: ")
-
-    print()
-
-    if numbero == "7":
-        grid[0] = "O"
-        printgrid()
-        print()
-    elif numbero == "8":
-        grid[1] = "O"
-        printgrid()
-        print()
-    elif numbero == "9":
-        grid[2] = "O"
-        printgrid()
-        print()
-    elif numbero == "4":
-        grid[3] = "O"
-        printgrid()
-        print()
-    elif numbero == "5":
-        grid[4] = "O"
-        printgrid()
-        print()
-    elif numbero == "6":
-        grid[5] = "O"
-        printgrid()
-        print()
-    elif numbero == "1":
-        grid[6] = "O"
-        printgrid()
-        print()
-    elif numbero == "2":
-        grid[7] = "O"
-        printgrid()
-        print()
-    elif numbero == "3":
-        grid[8] = "O"
-        printgrid()
-        print()
 
 def with_mate():
-    print()
     isgridfull = False
+    turn = 0
     printgrid()
-    print()
     while isgridfull == False:
-        user_input_x()
-        user_input_o()
+        user_input(turn)
+        turn += 1
         if grid[0] != " " and grid[1] != " " and grid[2] != " " and grid[3] != " " and grid[4] != " " and grid[5] != " " and grid[6] != " " and grid[7] != " " and grid[8] != " ":
             isgridfull = True
 
