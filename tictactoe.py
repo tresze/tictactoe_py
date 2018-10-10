@@ -50,15 +50,18 @@ def user_input(t):
         grid[8] = mark
         printgrid()
 
+def is_game_ended():
+    if grid[0] != " " and grid[1] != " " and grid[2] != " " and grid[3] != " " and grid[4] != " " and grid[5] != " " and grid[6] != " " and grid[7] != " " and grid[8] != " ":
+        return True
+    else:
+        return False
+
 def with_mate():
-    isgridfull = False
     turn = 0
     printgrid()
-    while isgridfull == False:
+    while is_game_ended() == False:
         user_input(turn)
         turn += 1
-        if grid[0] != " " and grid[1] != " " and grid[2] != " " and grid[3] != " " and grid[4] != " " and grid[5] != " " and grid[6] != " " and grid[7] != " " and grid[8] != " ":
-            isgridfull = True
 
 def menu():
     print("\n************MAIN MENU**************\n")
