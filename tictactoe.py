@@ -1,3 +1,5 @@
+#tictactoe.py
+
 board = [0, 1, 2,
          3, 4, 5,
          6, 7, 8]
@@ -11,9 +13,8 @@ def show():
 
 
 def menu():
-    print("\n************MAIN MENU**************")
-    print(" ")
-    print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit""")
+    print("\n************MAIN MENU**************\n")
+    print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit\n")
     
     menu_choice = False
     menu_choice = str(input("The number of your choice: "))
