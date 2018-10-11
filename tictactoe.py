@@ -29,33 +29,8 @@ def user_input(t):
 
     print()
 
-    if number == "7":
-        grid[0] = mark
-        printgrid()
-    elif number == "8":
-        grid[1] = mark
-        printgrid()
-    elif number == "9":
-        grid[2] = mark
-        printgrid()
-    elif number == "4":
-        grid[3] = mark
-        printgrid()
-    elif number == "5":
-        grid[4] = mark
-        printgrid()
-    elif number == "6":
-        grid[5] = mark
-        printgrid()
-    elif number == "1":
-        grid[6] = mark
-        printgrid()
-    elif number == "2":
-        grid[7] = mark
-        printgrid()
-    elif number == "3":
-        grid[8] = mark
-        printgrid()
+    grid[cells[number]] = mark
+    printgrid()
 
 def is_game_ended():
     isGameWon = False
