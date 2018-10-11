@@ -1,5 +1,5 @@
 #tictactoe.py
-
+import os
 
 def printgrid():
     print("\n" + grid[0], "|", grid[1], "|", grid[2])
@@ -33,6 +33,7 @@ def user_input(t):
 
     # printing the mark into the grid with the help of the "cells" dictionary
     grid[cells[number]] = mark
+    os.system("clear")
     printgrid()
 
 def is_game_ended():
@@ -57,7 +58,7 @@ def is_game_ended():
         isGameWon = True
 
     if isGameWon:
-        print("You won!\n")
+        print("You won!\n")        
         return True     
         
     # checking for a tie
@@ -80,16 +81,18 @@ def regame():
     menu()
 
 def menu():
-    print("\n************MAIN MENU**************\n")
-    print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit\n")
-   
+      
     while True:
+        print("\n************MAIN MENU**************\n")
+        print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit\n")
         menu_choice = input("The number of your choice: ")
+        os.system("clear")
         if menu_choice == "1":
             with_mate()
             reg = input("Do you want to play again (Y/N)? ").upper()
             if reg == "Y":
-                regame()
+                os.system("clear")
+                grid = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
             else:
                 exit()
         elif menu_choice == "2":
