@@ -51,10 +51,10 @@ def user_input(t):
         printgrid()
 
 def is_game_ended():
-    if grid[0] != " " and grid[1] != " " and grid[2] != " " and grid[3] != " " and grid[4] != " " and grid[5] != " " and grid[6] != " " and grid[7] != " " and grid[8] != " ":
-        return True
-    else:
-        return False
+    for value in grid:
+        if value == " ":
+            return False
+    return True
 
 def with_mate():
     turn = 0
@@ -62,6 +62,7 @@ def with_mate():
     while is_game_ended() == False:
         user_input(turn)
         turn += 1
+    print("Game ended.\n")
 
 def menu():
     print("\n************MAIN MENU**************\n")
