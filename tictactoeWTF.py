@@ -81,18 +81,19 @@ def regame():
     menu()
 
 def menu():
+    global grid
       
     while True:
         print("\n************MAIN MENU**************\n")
         print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit\n")
         menu_choice = input("The number of your choice: ")
+        grid = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
         os.system("clear")
         if menu_choice == "1":
             with_mate()
             reg = input("Do you want to play again (Y/N)? ").upper()
             if reg == "Y":
-                os.system("clear")
-                grid = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+                os.system("clear")   
             else:
                 exit()
         elif menu_choice == "2":
