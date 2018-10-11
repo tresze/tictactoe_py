@@ -1,4 +1,5 @@
 #tictactoe.py
+import os
 
 def printgrid():
     print("\n" + grid[0], "|", grid[1], "|", grid[2])
@@ -32,6 +33,7 @@ def user_input(t):
 
     # printing the mark into the grid with the help of the "cells" dictionary
     grid[cells[number]] = mark
+    os.system("clear")
     printgrid()
 
 def is_game_ended():
@@ -74,16 +76,43 @@ def with_mate():
         user_input(turn)
         turn += 1
 
+# player vs. computer mode
+def with_com():
+    turn = 0
+    printgrid()
+    while is_game_ended() == False:
+        user_input(turn)
+        turn += 1
+
+def regame():
+    re = "0"
+    while re != "y" or re != "n":
+        re = input("Do you want to play again (Y/N)? ").upper()
+        if re == "Y":
+            os.system("clear")
+            menu()   
+        elif re == "N":
+            exit()
+        else:
+            print("Please write a letter \"y\" or a letter \"n\".\n")
+
 def menu():
-    print("\n************MAIN MENU**************\n")
-    print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit\n")
-   
+    global grid
+
     while True:
+        print("\n************MAIN MENU**************\n")
+        print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit\n")
+
         menu_choice = input("The number of your choice: ")
+
+        grid = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        os.system("clear")
+
         if menu_choice == "1":
             with_mate()
+            regame()
         elif menu_choice == "2":
-            print("with_com()")
+            with_com()
         elif menu_choice == "3":
             print("com_vs_com()")
         elif menu_choice == "4":
