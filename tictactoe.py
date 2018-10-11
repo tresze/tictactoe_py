@@ -51,9 +51,33 @@ def user_input(t):
         printgrid()
 
 def is_game_ended():
+    isGameWon = False
+
+    if grid[0] == grid[1] and grid[1] == grid[2] and grid[0] != " ":
+        isGameWon = True
+    if grid[3] == grid[4] and grid[4] == grid[5] and grid[3] != " ":
+        isGameWon = True
+    if grid[6] == grid[7] and grid[7] == grid[8] and grid[6] != " ":
+        isGameWon = True
+    if grid[0] == grid[3] and grid[3] == grid[6] and grid[0] != " ":
+        isGameWon = True
+    if grid[1] == grid[4] and grid[4] == grid[7] and grid[1] != " ":
+        isGameWon = True
+    if grid[2] == grid[5] and grid[5] == grid[8] and grid[2] != " ":
+        isGameWon = True
+    if grid[0] == grid[4] and grid[4] == grid[8] and grid[0] != " ":
+        isGameWon = True
+    if grid[2] == grid[4] and grid[4] == grid[6] and grid[2] != " ":
+        isGameWon = True
+
+    if isGameWon:
+        print("You won!\n")
+        return True
+
     for value in grid:
         if value == " ":
             return False
+    print("It's a tie!\n")
     return True
 
 def with_mate():
@@ -62,7 +86,6 @@ def with_mate():
     while is_game_ended() == False:
         user_input(turn)
         turn += 1
-    print("Game ended.\n")
 
 def menu():
     print("\n************MAIN MENU**************\n")
