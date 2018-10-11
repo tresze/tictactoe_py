@@ -15,10 +15,17 @@ def user_input(t):
         pl = "2"
         mark = "O"
 
-    number = input("Player " + pl + ": ")
-    while number not in accepted_chars: 
+    correctinput = False
+    while correctinput == False:
+        number = input("Player " + pl + "'s turn: ")
+        if number not in accepted_chars:
             print("Invalid input! You can write: 1/2/3/4/5/6/7/8/9")
-            number = input("Player " + pl + ": ")
+
+        elif grid[cells[number]] != " ":
+            print("This spot is taken! Please choose another one.")
+
+        else:
+            correctinput = True
 
     print()
 
@@ -110,6 +117,18 @@ grid = [" ", " ", " ",
         " ", " ", " "]
 
 accepted_chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+cells = {
+            "7": 0,
+            "8": 1,
+            "9": 2,
+            "4": 3,
+            "5": 4,
+            "6": 5,
+            "1": 6,
+            "2": 7,
+            "3": 8
+        }
 
 menu()
 
