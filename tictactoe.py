@@ -8,6 +8,7 @@ def printgrid():
     print(grid[6], "|", grid[7], "|", grid[8], "\n")
 
 def user_input(t):
+    # checking the turn (even = Player 1 (X), odd = Player 2 (O))
     if t % 2 == 0:
         pl = "1"
         mark = "X"
@@ -19,22 +20,24 @@ def user_input(t):
     while correctinput == False:
         number = input("Player " + pl + "'s turn: ")
         if number not in accepted_chars:
-            print("Invalid input! You can write: 1/2/3/4/5/6/7/8/9")
+            print("Invalid input! You can write: 1/2/3/4/5/6/7/8/9") # taking a foolproof input from the user
 
         elif grid[cells[number]] != " ":
-            print("This spot is taken! Please choose another one.")
+            print("This spot is taken! Please choose another one.") # this doesn't let the user overwrite an existing mark
 
         else:
             correctinput = True
 
     print()
 
+    # printing the mark into the grid with the help of the "cells" dictionary
     grid[cells[number]] = mark
     printgrid()
 
 def is_game_ended():
     isGameWon = False
 
+    # winning combos in the grid
     if grid[0] == grid[1] and grid[1] == grid[2] and grid[0] != " ":
         isGameWon = True
     if grid[3] == grid[4] and grid[4] == grid[5] and grid[3] != " ":
@@ -56,12 +59,14 @@ def is_game_ended():
         print("You won!\n")
         return True
 
+    # checking for a tie
     for value in grid:
         if value == " ":
             return False
     print("It's a tie!\n")
     return True
 
+# player vs. player mode
 def with_mate():
     turn = 0
     printgrid()
@@ -91,8 +96,9 @@ grid = [" ", " ", " ",
         " ", " ", " ",
         " ", " ", " "]
 
-accepted_chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+accepted_chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] # this is for checking whether the user input is correct
 
+# dictionary for mapping the numpad (input) numbers with the list (grid) numbers
 cells = {
             "7": 0,
             "8": 1,
