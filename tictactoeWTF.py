@@ -77,8 +77,11 @@ def with_mate():
         turn += 1
 
 def regame():
-    grid = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    menu()
+    reg = input("Do you want to play again (Y/N)? ").upper()
+    if reg == "Y":
+        os.system("clear")   
+    else:
+        exit()
 
 def menu():
     global grid
@@ -91,11 +94,7 @@ def menu():
         os.system("clear")
         if menu_choice == "1":
             with_mate()
-            reg = input("Do you want to play again (Y/N)? ").upper()
-            if reg == "Y":
-                os.system("clear")   
-            else:
-                exit()
+            regame()
         elif menu_choice == "2":
             print("with_com()")
         elif menu_choice == "3":
