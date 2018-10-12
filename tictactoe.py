@@ -1,5 +1,6 @@
 #tictactoe.py
 import os
+from random import randint
 
 def printgrid():
     print("\n" + grid[0], "|", grid[1], "|", grid[2])
@@ -36,6 +37,17 @@ def user_input(t):
     os.system("clear")
     printgrid()
 
+# generates a random position for the computer's mark
+def computer():
+    freecells = []
+    for x in range(0, 9):
+        if grid[x] == " ":
+            freecells.append(x)
+    rnd = randint(0, len(freecells) - 1)
+    grid[freecells[rnd]] = "X"
+    os.system("clear")
+    printgrid()
+
 def is_game_ended():
     isGameWon = False
 
@@ -58,8 +70,12 @@ def is_game_ended():
         isGameWon = True
 
     if isGameWon:
-        print("You won!\n")
-        return True
+        if menu_choice == "2" and turn % 2 == 1:
+            print("Computer won!\n")
+            return True
+        else:
+            print("You won!\n")
+            return True
 
     # checking for a tie
     for value in grid:
@@ -78,10 +94,15 @@ def with_mate():
 
 # player vs. computer mode
 def with_com():
+    global menu_choice, turn
+    
     turn = 0
     printgrid()
     while is_game_ended() == False:
-        user_input(turn)
+        if turn % 2 == 0:
+            computer()
+        else:
+            user_input(turn)
         turn += 1
 
 def regame():
@@ -97,11 +118,11 @@ def regame():
             print("Please write a letter \"y\" or a letter \"n\".\n")
 
 def menu():
-    global grid
+    global grid, turn, menu_choice
 
     while True:
         print("\n************MAIN MENU**************\n")
-        print("1: Game with mate\n2: Game with computer\n3: Computer vs computer\n4: Quit\n")
+        print("1: Game with mate\n2: Game with computer\n3: Quit\n")
 
         menu_choice = input("The number of your choice: ")
 
@@ -113,12 +134,12 @@ def menu():
             regame()
         elif menu_choice == "2":
             with_com()
+        # elif menu_choice == "3":
+        #     print("com_vs_com()")
         elif menu_choice == "3":
-            print("com_vs_com()")
-        elif menu_choice == "4":
             exit() 
         else:
-            print("Invalid input! Please enter: 1 / 2 / 3 / 4")
+            print("Invalid input! Please enter: 1 / 2 / 3")
             menu() 
 
 grid = [" ", " ", " ",
